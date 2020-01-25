@@ -1,9 +1,8 @@
 FROM rabbitmq:alpine
 
 ENV RABBIT_USER=taiga \
-	RABBIT_PASSWORD=qwerty \
-	RABBIT_VHOST=taiga \
-	STARTUP_TIMEOUT=15s
+		RABBIT_PASSWORD=qwerty \
+		RABBIT_VHOST=taiga
 
 COPY start.sh /start.sh
 
