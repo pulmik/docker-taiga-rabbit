@@ -13,7 +13,7 @@ if [ ! -f $RABBIT_INITIALIZED_LOCK ]; then
     ok=1
     while [ $ok -gt 0 ]; do
         sleep 1
-        rabbit_pid=$(cat /var/lib/rabbitmq/mnesia/rabbit*.pid)
+        rabbit_pid=$(ls -1 /var/lib/rabbitmq/mnesia/rabbit*.pid)
         ok=$?
     done
     rabbitmqctl wait $rabbit_pid
