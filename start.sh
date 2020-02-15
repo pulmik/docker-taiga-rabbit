@@ -10,13 +10,7 @@ if [ ! -f $RABBIT_INITIALIZED_LOCK ]; then
     touch $RABBIT_INITIALIZED_LOCK
 
     echo 'Waiting for rabbitmq to start...'
-    ok=1
-    while [ $ok -gt 0 ]; do
-        sleep 1
-        rabbit_pid=$(cat /var/lib/rabbitmq/mnesia/rabbit*.pid)
-        ok=$?
-    done
-    rabbitmqctl wait $rabbit_pid
+    rabbitmqctl wait $RABBITMQ_PID_FILE
 
     echo 'Initializing rabbitmq vhost and user...'
     rabbitmqctl add_user $RABBIT_USER $RABBIT_PASSWORD
